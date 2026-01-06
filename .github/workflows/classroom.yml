@@ -1,0 +1,19 @@
+name: Autograde
+on:
+  - push
+
+permissions:
+  checks: write
+  contents: read
+
+jobs:
+  grade:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+
+      - name: 코드 체크아웃
+        uses: actions/checkout@v4
+
+      - name: 과제 전용 채점기 실행
+        uses: DKU-IRDM-Classroom/Test-Classroom-Test-Assignment-C-File-grader@v1
